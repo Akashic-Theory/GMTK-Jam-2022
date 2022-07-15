@@ -29,7 +29,7 @@ public class Game : MonoBehaviour
         spawnTimer -= Time.fixedDeltaTime;
         if (spawnTimer <= 0)
         {
-            SpawnEnemy();
+            //SpawnEnemy();
             spawnTimer = spawnDelay;
         }
     }
@@ -38,6 +38,6 @@ public class Game : MonoBehaviour
     {
         var creep = Instantiate(creepPrefab, new Vector3(Random.Range(-2f, 3f), 0f, Random.Range(-2f, 3f)), Quaternion.identity);
         Creeps.Add(creep.GetComponent<Creep>());
-        Debug.Log($"Spawned creep - Now {Creeps.Count}");
+        //Debug.Log($"Spawned creep - Now {Creeps.Count}");
     }
 }
