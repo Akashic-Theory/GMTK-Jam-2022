@@ -22,9 +22,9 @@ public class Creep : MonoBehaviour
     private Quaternion[] dieAngles = new Quaternion[6]
     {
         Quaternion.LookRotation(Vector3.forward, Vector3.up),
-        Quaternion.LookRotation(Vector3.up, Vector3.back),
-        Quaternion.LookRotation(Vector3.up, Vector3.right),
-        Quaternion.LookRotation(Vector3.up, Vector3.left),
+        Quaternion.LookRotation(Vector3.down, Vector3.forward),
+        Quaternion.LookRotation(Vector3.forward, Vector3.left),
+        Quaternion.LookRotation(Vector3.forward, Vector3.right),
         Quaternion.LookRotation(Vector3.up, Vector3.forward),
         Quaternion.LookRotation(Vector3.forward, Vector3.down),
     };
@@ -79,6 +79,7 @@ public class Creep : MonoBehaviour
     private void SkullInit()
     {
         GameObject die = Instantiate(DicePrefab, DieSocket);
+        Debug.Log(value);
         die.transform.rotation = dieAngles[value - 1];
     }
 

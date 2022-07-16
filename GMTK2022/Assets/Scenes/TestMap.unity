@@ -8432,9 +8432,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a27391efb8feee549b32522deca26844, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  creepPrefab: {fileID: 368333358078131028, guid: 4382d4429a68c764895d78433501ab6c,
+  creepPrefab: {fileID: 5807117926278365455, guid: f8cebe00df5cd1741bd9743ed8028459,
     type: 3}
-  spawnDelay: 5
+  spawnDelay: 3
 --- !u!4 &2046149638
 Transform:
   m_ObjectHideFlags: 0
