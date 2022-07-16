@@ -10,11 +10,20 @@ public class Tower : MonoBehaviour
     public GameObject projectile;
     
     // Stats
+    [Header("Statistics")]
     public int damage = 4;
     public float attackSpeed = 1f;
     public float range = 3.5f;
     private float attackDelay;
-
+    
+    // Visual Parameters
+    [Header("Visual Parameters")]
+    public float bobAmplitude;
+    public float bobFrequency;
+    public float bobPhase;
+    public float rotFrequency;
+    public float rotPhase;
+    
     //
     private float attackCD = 0f;
     private Creep target = null;
@@ -43,5 +52,19 @@ public class Tower : MonoBehaviour
             proj.target = target;
             attackCD = attackDelay;
         }
+    }
+
+    private void Update()
+    {
+        Vector3 pos = socket.position;
+        pos.y = bobAmplitude * Mathf.Sin(bobFrequency * Time.time + bobPhase);
+        socket.position = pos;
+        socket.rotation = Quaternion.LookRotation(
+                            new Vector3(
+                                Mathf.Sin(rotFrequency * Time.time + rotPhase), 
+                                0, 
+                                Mathf.Cos(rotFrequency * Time.time + rotPhase)),
+                            Vector3.up
+            );
     }
 }
