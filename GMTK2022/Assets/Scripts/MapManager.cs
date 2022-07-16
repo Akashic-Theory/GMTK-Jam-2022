@@ -23,12 +23,15 @@ public class MapManager : MonoBehaviour
         layer = 1 << LayerMask.NameToLayer("Ground");
     }
 
-    private void Start()
+    public void PlaceTower(InputAction.CallbackContext context)
     {
-        StartCoroutine(PlaceTower(tower));
+        if (!context.performed)
+            return;
+
+        StartCoroutine(DoPlaceTower());
     }
 
-    public IEnumerator PlaceTower(GameObject tower)
+    private IEnumerator DoPlaceTower()
     {
         Vector3Int cell = new Vector3Int();
         GroundTile tile = null;
