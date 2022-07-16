@@ -32,12 +32,10 @@ public class DiceDrag : MonoBehaviour
         if (Physics.Raycast(ray, out hit, Mathf.Infinity, LayerMask.GetMask("Socket")))
         {
             dice.transform.position = hit.transform.position;
-            Debug.Log("Socket");
         }
         else if (Physics.Raycast(ray, out hit, Mathf.Infinity, LayerMask.GetMask("Hover")))
         {
             dice.transform.position = hit.point;
-            Debug.Log("Move");
         } 
     }
 
@@ -53,7 +51,6 @@ public class DiceDrag : MonoBehaviour
             {
                 dice = hit.transform.GetComponent<Dice>();
                 original = dice.transform.position;
-                Debug.Log($"Got dice of {dice.val}");
                 dragging = true;
             }
         } else if (context.canceled && context.control.path == click)

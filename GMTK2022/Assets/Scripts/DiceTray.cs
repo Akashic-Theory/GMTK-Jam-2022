@@ -15,6 +15,7 @@ public class DiceTray : MonoBehaviour
     [SerializeField] private Transform[] colliders;
     [SerializeField] private Transform[] extents;
     [SerializeField] private Transform cdRep;
+    [SerializeField] private Transform[] bucketExtents;
 
     [Space]
     [SerializeField] private int _dicePool;
@@ -29,7 +30,10 @@ public class DiceTray : MonoBehaviour
     }
 
     [SerializeField]
-    private int maxRoll = 20;
+    private int maxRoll = 5;
+
+    [SerializeField] float bucketSpawnSpeed = 3f;
+    [SerializeField] float bucketSpawnCd = 0f;
 
     [SerializeField] private float rollCdMax = 3f;
     private float _rollCd;
@@ -47,18 +51,49 @@ public class DiceTray : MonoBehaviour
             cdRep.localScale = new Vector3(1f, 1f, _rollCd);
         }
     }
+
+    [SerializeField] private float bucketScale = 0.05f;
     
     private List<Dice> dice;
+    private List<DiceRoller> bucketDice;
     [SerializeField] private Vector3 padding;
     
     // UI stuff
     [SerializeField] private TMP_Text poolText;
     [SerializeField] private TMP_Text rollText;
     private Reroll rerollHandler;
+    
+    
+    // Upgrades
+    private int tScale = 0;
+    private int dScale = 0;
+    [SerializeField] private DiceSocket[] upgradeSockets;
+
+    private void PrepUpgrades()
+    {
+        if (upgradeSockets.Length != 4)
+        {
+            Debug.LogError("Wrong num of upgrade slots");
+        }
+
+        for (int i = 0; i < 4; i++)
+        {
+            if (upgradeSockets[i].open)
+            {
+                continue;
+            }
+            upgradeSockets[i].open = true;
+            upgradeSockets[i].valid = new bool[]{ false, false, false, false, false, false};
+            int index = Random.Range(0, 6);
+            upgradeSockets[i].valid[index] = true;
+        }
+    }
+
     private void Awake()
     {
         dice = new List<Dice>();
-        if (extents.Length != 2)
+        bucketDice = new List<DiceRoller>();
+        if (extents.Length != 2 || bucketExtents.Length != 2)
         {
             Debug.LogError("Wrong num of extents");
         }
@@ -66,11 +101,46 @@ public class DiceTray : MonoBehaviour
         dicePool = dicePool;
         rerollHandler = GetComponentInChildren<Reroll>();
         rerollHandler.Roll += Roll;
+        rollCd = rollCdMax;
+        bucketSpawnCd = 0f;
+        for (int i = 0; i < 4; i++)
+        {
+            upgradeSockets[i].open = false;
+            upgradeSockets[i].OnPop += popped =>
+            {
+                Destroy(popped.gameObject);
+                dicePool++;
+            };
+        }
+        PrepUpgrades();
     }
 
     private void Update()
     {
         rollCd += Time.deltaTime / rollCdMax;
+        bucketSpawnCd -= Time.deltaTime;
+        if (bucketDice.Count < _dicePool && bucketSpawnCd <= 0f)
+        {
+            Vector3 a = bucketExtents[0].position;
+            Vector3 b = bucketExtents[1].position;
+            Vector3 c = new Vector3(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));
+            var vec = new Vector3(
+                Mathf.Lerp(a.x, b.x, (float)c.x),
+                Mathf.Lerp(a.y, b.y, (float)c.y),
+                Mathf.Lerp(a.z, b.z, (float)c.z)
+            );
+            DiceRoller roller = Instantiate(diceRollPrefab, vec, Quaternion.identity);
+            roller.Init(Random.insideUnitSphere);
+            roller.transform.localScale = Vector3.one * bucketScale;
+            bucketDice.Add(roller);
+            bucketSpawnCd = 1f / bucketSpawnSpeed;
+        }
+
+        while (bucketDice.Count > _dicePool)
+        {
+            Destroy(bucketDice[0].gameObject);
+            bucketDice.RemoveAt(0);
+        }
     }
 
     public void Roll(InputAction.CallbackContext context)

@@ -24,6 +24,6 @@ public class DiceRoller : MonoBehaviour
     public void Init(Vector3 dir)
     {
         rb.angularVelocity = new Vector3(Random.Range(0f,1f), Random.Range(0f,1f), Random.Range(0f,1f)).normalized * rotStrength;
-        rb.velocity = dir * velocity * Random.Range(.7f, 1f);
+        rb.velocity = dir.normalized * velocity * Random.Range(.7f, 1f);
     }
 }

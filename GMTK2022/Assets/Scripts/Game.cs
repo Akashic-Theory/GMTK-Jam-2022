@@ -31,7 +31,7 @@ public class Game : MonoBehaviour
         spawnTimer -= Time.fixedDeltaTime;
         if (spawnTimer <= 0)
         {
-            SpawnEnemy();
+            //SpawnEnemy();
             spawnTimer = spawnDelay;
         }
     }
