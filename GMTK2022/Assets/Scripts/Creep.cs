@@ -6,13 +6,41 @@ using Random = UnityEngine.Random;
 
 public class Creep : MonoBehaviour
 {
-    public int hp = 4;
-    public int value;
-    public int[] resist = new int[6] { 1, 2, 4, 0, 4, 2 };
+    [SerializeField]
+    protected int hp = 4;
+    [SerializeField]
+    protected float speed;
+    [SerializeField]
+    protected int[] resist = new int[6] { 1, 2, 4, 0, 4, 2 };
+
+    protected int value;
+    protected int pathIndex = 1;
+    protected Vector3 target;
 
     private void Awake()
     {
         value = Random.Range(1, 7);
+        target = Game.path[pathIndex];
+    }
+
+    private void FixedUpdate()
+    {
+        gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, target, Time.fixedDeltaTime * speed);
+
+        if (gameObject.transform.position.Equals(target))
+        {
+            pathIndex++;
+
+            if(pathIndex < Game.path.Count)
+            {
+                target = Game.path[pathIndex];
+            }
+            else
+            {
+                Game.DamagePlayer(1);
+                Die();
+            }
+        }
     }
 
     public void Hurt(int dice, int damage)
