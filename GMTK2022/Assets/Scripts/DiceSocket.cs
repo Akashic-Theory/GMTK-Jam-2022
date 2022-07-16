@@ -15,7 +15,7 @@ public class DiceSocket : MonoBehaviour
 
     public void Attach(Dice dice)
     {
-        if (valid[dice.value - 1])
+        if (valid[dice.val - 1])
         {
             var diceTransform = dice.transform;
             diceTransform.position = transform.position;

@@ -164,7 +164,9 @@ public class DiceTray : MonoBehaviour
         }
 
         var rt = roller.transform;
-        dice.Add(Instantiate(dicePrefab, rt.position, rt.rotation));
+        Dice die = Instantiate(dicePrefab, rt.position, rt.rotation);
+        dice.Add(die);
+        die.val = Random.Range(1, 7);
         Destroy(roller.gameObject);
     }
 }

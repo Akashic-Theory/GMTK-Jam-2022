@@ -11,23 +11,13 @@ public class Creep : MonoBehaviour
     [SerializeField]
     protected Transform DieSocket;
     [SerializeField]
-    protected GameObject DicePrefab;
+    protected Dice DicePrefab;
     [SerializeField]
     protected int hp = 4;
     [SerializeField]
     protected float speed;
     [SerializeField]
     protected int[] resist = new int[6] { 1, 2, 4, 0, 4, 2 };
-
-    private Quaternion[] dieAngles = new Quaternion[6]
-    {
-        Quaternion.LookRotation(Vector3.forward, Vector3.up),
-        Quaternion.LookRotation(Vector3.down, Vector3.forward),
-        Quaternion.LookRotation(Vector3.forward, Vector3.left),
-        Quaternion.LookRotation(Vector3.forward, Vector3.right),
-        Quaternion.LookRotation(Vector3.up, Vector3.forward),
-        Quaternion.LookRotation(Vector3.forward, Vector3.down),
-    };
 
     protected int value;
     protected int pathIndex = 1;
@@ -39,7 +29,9 @@ public class Creep : MonoBehaviour
     private void Awake()
     {
         value = Random.Range(1, 7);
-        SkullInit();
+        Dice die = Instantiate(DicePrefab, DieSocket);
+        die.val = value;
+
         target = Game.path[pathIndex];
         transform.rotation = Quaternion.LookRotation(target - transform.position, Vector3.up);
 
@@ -74,13 +66,6 @@ public class Creep : MonoBehaviour
                 animator.SetBool("Attack", true);
             }
         }
-    }
-
-    private void SkullInit()
-    {
-        GameObject die = Instantiate(DicePrefab, DieSocket);
-        Debug.Log(value);
-        die.transform.rotation = dieAngles[value - 1];
     }
 
     public void Hurt(int dice, int damage)
