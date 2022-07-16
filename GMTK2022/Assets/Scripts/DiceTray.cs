@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -13,22 +14,47 @@ public class DiceTray : MonoBehaviour
     [SerializeField] private Dice dicePrefab;
     [SerializeField] private Transform[] colliders;
     [SerializeField] private Transform[] extents;
-    
+    [SerializeField] private Transform cdRep;
+
     [Space]
-    [SerializeField]
-    private int dicePool;
+    [SerializeField] private int _dicePool;
+    public int dicePool
+    {
+        get => _dicePool;
+        set
+        {
+            _dicePool = value;
+            poolText.text = $"Die: {value}";
+        }
+    }
+
     [SerializeField]
     private int maxRoll = 20;
 
-    [SerializeField] private int simulationSteps = 100;
+    [SerializeField] private float rollCdMax = 3f;
+    private float _rollCd;
+    private float rollCd
+    {
+        get => _rollCd;
+        set
+        {
+            _rollCd = value;
+            if (value > 1f)
+            {
+                _rollCd = 1f;
+            }
 
+            cdRep.localScale = new Vector3(1f, 1f, _rollCd);
+        }
+    }
+    
     private List<Dice> dice;
     [SerializeField] private Vector3 padding;
-
-    // We're in the simulation
-    private Scene _sim;
-    private PhysicsScene _phys;
-
+    
+    // UI stuff
+    [SerializeField] private TMP_Text poolText;
+    [SerializeField] private TMP_Text rollText;
+    private Reroll rerollHandler;
     private void Awake()
     {
         dice = new List<Dice>();
@@ -36,34 +62,32 @@ public class DiceTray : MonoBehaviour
         {
             Debug.LogError("Wrong num of extents");
         }
-        // CreatePhysicsScene();
+
+        dicePool = dicePool;
+        rerollHandler = GetComponentInChildren<Reroll>();
+        rerollHandler.Roll += Roll;
     }
 
     private void Update()
     {
-        
-    }
-
-    private void CreatePhysicsScene()
-    {
-        _sim = SceneManager.CreateScene("Roller", new CreateSceneParameters(LocalPhysicsMode.Physics3D));
-        _phys = _sim.GetPhysicsScene();
-
-        foreach (Transform col in colliders)
-        {
-            var ghost = Instantiate(col.gameObject, col.position, col.rotation);
-            ghost.GetComponent<Renderer>().enabled = false;
-            SceneManager.MoveGameObjectToScene(ghost, _sim);
-        }
+        rollCd += Time.deltaTime / rollCdMax;
     }
 
     public void Roll(InputAction.CallbackContext context)
     {
-        if (!context.performed)
+        if (context.performed)
+        {
+            Roll();
+        }   
+    }
+    public void Roll()
+    {
+        if (rollCd < 1f)
         {
             return;
         }
-        
+
+        rollCd = 0f;
         dicePool += dice.Count;
         foreach (var die in dice)
         {
@@ -72,6 +96,7 @@ public class DiceTray : MonoBehaviour
         dice.Clear();
 
         int toRoll = Mathf.Min(dicePool, maxRoll);
+        dicePool -= toRoll;
         List<Vector3> points = new List<Vector3>();
 
         #region Disgusting Calculation
@@ -140,7 +165,6 @@ public class DiceTray : MonoBehaviour
 
         var rt = roller.transform;
         dice.Add(Instantiate(dicePrefab, rt.position, rt.rotation));
-        dicePool--;
         Destroy(roller.gameObject);
     }
 }
