@@ -27,7 +27,9 @@ public class DiceDrag : MonoBehaviour
             return;
         }
         Ray ray = cam.ScreenPointToRay(Mouse.current.position.ReadValue());
+
         RaycastHit hit;
+        
         if (Physics.Raycast(ray, out hit, Mathf.Infinity, LayerMask.GetMask("Socket")))
         {
             dice.transform.position = hit.transform.position;
@@ -52,7 +54,7 @@ public class DiceDrag : MonoBehaviour
                 original = dice.transform.position;
                 dragging = true;
             }
-        } else if (context.canceled && context.control.path == click)
+        } else if (context.canceled && context.control.path == click && dragging)
         {
             Ray ray = cam.ScreenPointToRay(Mouse.current.position.ReadValue());
             RaycastHit hit;

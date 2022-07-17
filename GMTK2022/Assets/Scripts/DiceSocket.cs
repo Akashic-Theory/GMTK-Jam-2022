@@ -54,6 +54,7 @@ public class DiceSocket : MonoBehaviour
     {
         if (held)
         {
+            Debug.Log("Pop!");
             OnPop(held);
         }
 

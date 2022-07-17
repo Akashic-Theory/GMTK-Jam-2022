@@ -37,7 +37,6 @@ public class Purchase : MonoBehaviour
         if(sockets.All(s => s.held) && tray.dicePool >= cost)
         {
             tray.dicePool -= cost;
-            
 
             foreach (DiceSocket socket in sockets)
             {

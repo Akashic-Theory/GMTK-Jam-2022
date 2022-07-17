@@ -29,22 +29,34 @@ public class Tower : MonoBehaviour
     //
     private float attackCD = 0f;
     private Creep target = null;
-    private int _dice = 1;
+    private int _dice = 0;
+    private bool placed = false;
     
     public int dice { get => _dice; set => _dice = value; }
     private void Awake()
     {
         attackDelay = 1f / attackSpeed;
+        gameObject.layer |= LayerMask.NameToLayer("Tower");
     }
 
     private void Start()
     {
         socket.OnSocket += OnSocket;
         socket.OnPop += OnPop;
+
+        socket.OnPop += popped =>
+        {
+            Destroy(popped.gameObject);
+        };
+
+        socket.open = true;
     }
 
     private void FixedUpdate()
     {
+        if (!placed)
+            return;
+
         attackCD -= Time.fixedDeltaTime;
         if (!target || target.transform.position.Dist2D(transform.position) > range)
         {
@@ -66,6 +78,9 @@ public class Tower : MonoBehaviour
 
     private void Update()
     {
+        if (!placed)
+            return;
+
         if(target)
             rotateAxis.rotation = Quaternion.LookRotation(target.transform.position - barrel.position, Vector3.up);
 
@@ -82,8 +97,15 @@ public class Tower : MonoBehaviour
             );
     }
 
+    public void Place()
+    {
+        placed = true;
+        gameObject.layer = LayerMask.NameToLayer("Default");
+    }
+
     private void OnSocket(Dice dice)
     {
+        DiceTray.tray.StealDice(dice);
         _dice = dice.val;
     }
 

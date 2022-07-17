@@ -9,6 +9,8 @@ using Random = UnityEngine.Random;
 
 public class DiceTray : MonoBehaviour
 {
+    public static DiceTray tray;
+
     [Header("Colliders")]
     [SerializeField] private DiceRoller diceRollPrefab;
     [SerializeField] private Dice dicePrefab;
@@ -19,6 +21,8 @@ public class DiceTray : MonoBehaviour
     [SerializeField] float diceScale = 0.2f;
     [SerializeField] private Purchase towerPurchase;
     [SerializeField] private Purchase dicePurchase;
+    [SerializeField] private Tower towerPrefab;
+    [SerializeField] private Transform towerSpawn;
 
     [Space]
     [SerializeField] private int _dicePool;
@@ -68,8 +72,6 @@ public class DiceTray : MonoBehaviour
     
     
     // Upgrades
-    private int tScale = 0;
-    private int dScale = 0;
     [SerializeField] private DiceSocket[] upgradeSockets;
 
     private void PrepUpgrades()
@@ -96,6 +98,9 @@ public class DiceTray : MonoBehaviour
 
     private void Awake()
     {
+        if (!tray)
+            tray = this;
+
         dice = new List<Dice>();
         bucketDice = new List<DiceRoller>();
         if (extents.Length != 2 || bucketExtents.Length != 2)
@@ -107,6 +112,10 @@ public class DiceTray : MonoBehaviour
         rerollHandler = GetComponentInChildren<Reroll>();
         rollCd = rollCdMax;
         bucketSpawnCd = 0f;
+    }
+
+    private void Start()
+    {
         for (int i = 0; i < 4; i++)
         {
             upgradeSockets[i].open = false;
@@ -115,11 +124,9 @@ public class DiceTray : MonoBehaviour
                 Destroy(popped.gameObject);
             };
         }
-        PrepUpgrades();
-    }
 
-    private void Start()
-    {
+        PrepUpgrades();
+
         rerollHandler.Roll += Roll;
         dicePurchase.OnBuy += BuyDice;
         towerPurchase.OnBuy += BuyTower;
@@ -135,9 +142,9 @@ public class DiceTray : MonoBehaviour
             Vector3 b = bucketExtents[1].position;
             Vector3 c = new Vector3(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));
             var vec = new Vector3(
-                Mathf.Lerp(a.x, b.x, (float)c.x),
-                Mathf.Lerp(a.y, b.y, (float)c.y),
-                Mathf.Lerp(a.z, b.z, (float)c.z)
+                Mathf.Lerp(a.x, b.x, c.x),
+                Mathf.Lerp(a.y, b.y, c.y),
+                Mathf.Lerp(a.z, b.z, c.z)
             );
             DiceRoller roller = Instantiate(diceRollPrefab, vec, Quaternion.identity);
             roller.Init(Random.insideUnitSphere);
@@ -153,6 +160,11 @@ public class DiceTray : MonoBehaviour
         }
     }
 
+    public void StealDice(Dice die)
+    {
+        dice.Remove(die);
+    }
+
     private void BuyDice()
     {
         maxRoll++;
@@ -160,7 +172,7 @@ public class DiceTray : MonoBehaviour
 
     private void BuyTower()
     {
-
+        Instantiate(towerPrefab, towerSpawn.position, Quaternion.identity);
     }
 
     public void Roll(InputAction.CallbackContext context)
