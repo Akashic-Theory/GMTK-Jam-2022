@@ -6,8 +6,14 @@ using UnityEngine.UI;
 
 public class MenuManager : MonoBehaviour
 {
-    public void OnStart()
+    public GameObject menu;
+
+    public void OnStart(int scene)
     {
-        SceneManager.LoadScene(1);
+        if (menu && menu.activeSelf)
+        {
+            SceneManager.LoadScene(scene);
+            Time.timeScale = 1f;
+        }
     }
 }

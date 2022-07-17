@@ -69,11 +69,14 @@ public class Spawner : MonoBehaviour
                     return cost;
                 }
             }
-            foreach (WaveData.UnitSpawn unit in wave.units)
+            else
             {
-                queue.Enqueue(unit);
+                foreach (WaveData.UnitSpawn unit in wave.units)
+                {
+                    queue.Enqueue(unit);
+                }
+                cost -= wave.cost;
             }
-            cost -= wave.cost;
         }
         return cost;
     }

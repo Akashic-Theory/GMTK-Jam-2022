@@ -8,10 +8,14 @@ public class Game : MonoBehaviour
 {
     [SerializeField]
     private GameObject creepPrefab;
+    [SerializeField]
+    private static GameObject gameOverMenu;
+    [SerializeField]
+    private int baseHealth;
 
     public static List<Creep> Creeps = null;
     public static List<Vector3> path;
-    public static int playerHealth = 50;
+    public static int playerHealth;
 
     public float spawnDelay = 2f;
     private float spawnTimer;
@@ -20,10 +24,12 @@ public class Game : MonoBehaviour
     
     private void Awake()
     {
-        if (Creeps == null)
-        {
-            Creeps = new List<Creep>();
-        }
+        Creeps = new List<Creep>();
+
+        playerHealth = baseHealth;
+
+        gameOverMenu = GameObject.FindGameObjectWithTag("gameOverMenu");
+        gameOverMenu.SetActive(false);
 
         spawnTimer = spawnDelay;
         _spawner = GetComponent<Spawner>();
@@ -58,7 +64,8 @@ public class Game : MonoBehaviour
 
         if (playerHealth <= 0)
         {
-            // GAME OVER
+            gameOverMenu.SetActive(true);
+            Time.timeScale = 0f;
             Debug.Log("Game Over!");
         }
     }

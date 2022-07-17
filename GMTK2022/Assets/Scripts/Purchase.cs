@@ -32,23 +32,28 @@ public class Purchase : MonoBehaviour
         }
     }
 
-    private void CheckStatus(Dice dice)
+    public void CheckStatus()
     {
-        if(sockets.All(s => s.held) && tray.dicePool >= cost)
+        if (sockets.All(s => s.held) && tray.dicePool >= cost)
         {
-            tray.dicePool -= cost;
-
             foreach (DiceSocket socket in sockets)
             {
                 socket.Pop();
             }
 
+            tray.dicePool -= cost;
             cost++;
+
             RandomizeRolls();
             UpdateDisplay();
 
             OnBuy();
         }
+    }
+
+    private void CheckStatus(Dice dice)
+    {
+        CheckStatus();
     }
 
     private void RandomizeRolls()

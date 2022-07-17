@@ -26,6 +26,14 @@ public class TowerDrag : MonoBehaviour
             return;
         }
 
+        if (!Mouse.current.leftButton.isPressed)
+        {
+            tower.transform.position = original;
+            tower = null;
+            dragging = false;
+            return;
+        }
+
         Ray ray = cam.ScreenPointToRay(Mouse.current.position.ReadValue());
 
         RaycastHit hit;

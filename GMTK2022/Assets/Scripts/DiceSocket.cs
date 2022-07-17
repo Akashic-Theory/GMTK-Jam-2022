@@ -36,6 +36,7 @@ public class DiceSocket : MonoBehaviour
         {
             Pop();
             held = dice;
+            dice.socketed = true;
 
             Transform diceTransform = dice.transform;
 
@@ -54,7 +55,7 @@ public class DiceSocket : MonoBehaviour
     {
         if (held)
         {
-            Debug.Log("Pop!");
+            held.socketed = false;
             OnPop(held);
         }
 

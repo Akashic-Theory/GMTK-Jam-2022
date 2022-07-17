@@ -6,6 +6,8 @@ using Random = UnityEngine.Random;
 
 public class Dice : MonoBehaviour
 {
+    public bool socketed = false;
+
     private int _val;
     public int val
     {
