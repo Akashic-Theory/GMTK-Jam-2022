@@ -9437,7 +9437,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   creepPrefab: {fileID: 0}
-  baseHealth: 0
+  baseHealth: 50
   spawnDelay: 3
 --- !u!4 &2046149638
 Transform:
@@ -9823,26 +9823,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: DiceTray
-      objectReference: {fileID: 0}
-    - target: {fileID: 2844022012006833353, guid: e1168ae1e146ed34ab3fcb6c60f848e2,
-        type: 3}
-      propertyPath: maxRoll
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 2844022012130071465, guid: e1168ae1e146ed34ab3fcb6c60f848e2,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 4.402921
-      objectReference: {fileID: 0}
-    - target: {fileID: 2844022012130071465, guid: e1168ae1e146ed34ab3fcb6c60f848e2,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4418555992823028186, guid: e1168ae1e146ed34ab3fcb6c60f848e2,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.56
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1168ae1e146ed34ab3fcb6c60f848e2, type: 3}

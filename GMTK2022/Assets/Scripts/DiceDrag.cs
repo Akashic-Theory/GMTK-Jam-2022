@@ -26,6 +26,16 @@ public class DiceDrag : MonoBehaviour
         {
             return;
         }
+
+        if (!Mouse.current.leftButton.isPressed)
+        {
+            dice.transform.position = original;
+            dice = null;
+            dragging = false;
+            return;
+        }
+
+
         Ray ray = cam.ScreenPointToRay(Mouse.current.position.ReadValue());
 
         RaycastHit hit;
@@ -51,8 +61,12 @@ public class DiceDrag : MonoBehaviour
             if (Physics.Raycast(ray, out hit, Mathf.Infinity, LayerMask.GetMask("Dice")))
             {
                 dice = hit.transform.GetComponent<Dice>();
-                original = dice.transform.position;
-                dragging = true;
+
+                if(!dice.socketed)
+                {
+                    original = dice.transform.position;
+                    dragging = true;
+                }
             }
         } else if (context.canceled && context.control.path == click && dragging)
         {
