@@ -95,7 +95,7 @@ MonoBehaviour:
   DieSocket: {fileID: 1830134164026066018}
   DicePrefab: {fileID: 7674925100196841918, guid: a7db84dc5cb3b5148a69c49a4070e3be,
     type: 3}
-  hp: 4
+  hp: 2
   growth: 1
   speed: 2
   resist: 010000000200000003000000040000000300000002000000

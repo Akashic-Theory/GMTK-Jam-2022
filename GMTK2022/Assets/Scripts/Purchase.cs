@@ -55,6 +55,11 @@ public class Purchase : MonoBehaviour
     {
         validRolls = (Random.Range(1, 7), Random.Range(1, 7));
 
+        while(validRolls.Item1 == validRolls.Item2)
+        {
+            validRolls.Item2 = Random.Range(1, 7);
+        }
+
         foreach(DiceSocket socket in sockets)
         {
             socket.valid = new bool[] { false, false, false, false, false, false };

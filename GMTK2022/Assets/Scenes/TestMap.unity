@@ -5085,6 +5085,16 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741826
+  - first: {x: -19, y: 2, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 3
+      m_TileSpriteIndex: 10
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741826
   - first: {x: -17, y: 2, z: 0}
     second:
       serializedVersion: 2
@@ -5386,6 +5396,26 @@ Tilemap:
       dummyAlignment: 0
       m_AllTileFlags: 1073741826
   - first: {x: 13, y: 2, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 3
+      m_TileSpriteIndex: 4
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741826
+  - first: {x: -20, y: 3, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 3
+      m_TileSpriteIndex: 10
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741826
+  - first: {x: -19, y: 3, z: 0}
     second:
       serializedVersion: 2
       m_TileIndex: 3
@@ -8783,7 +8813,7 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 327
     m_Data: {fileID: 11400000, guid: 5895d259535024a4f8c85efa5964e475, type: 2}
-  - m_RefCount: 507
+  - m_RefCount: 510
     m_Data: {fileID: 11400000, guid: 28dd0c3756ab58144b50abd4e7d9131e, type: 2}
   m_TileSpriteArray:
   - m_RefCount: 32
@@ -8794,7 +8824,7 @@ Tilemap:
     m_Data: {fileID: 21300000, guid: a9151fecffcf4b9418750dbca48cff68, type: 3}
   - m_RefCount: 20
     m_Data: {fileID: 21300000, guid: 3cd8c6d66e8e70e45893217f213d1aa9, type: 3}
-  - m_RefCount: 36
+  - m_RefCount: 37
     m_Data: {fileID: 21300000, guid: e5176c525398ba14db299d843a32078f, type: 3}
   - m_RefCount: 37
     m_Data: {fileID: 21300000, guid: 7aab24f350463fa4287d97deb85a79c8, type: 3}
@@ -8806,10 +8836,10 @@ Tilemap:
     m_Data: {fileID: 21300000, guid: e1bb6ebf79e88e0408b4ee2bb325cbb7, type: 3}
   - m_RefCount: 31
     m_Data: {fileID: 21300000, guid: e80aff83a36afde4b9deb6fda5ec36db, type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 2
+    m_Data: {fileID: 21300000, guid: 360efb2e14f67f844ac80030d7365f69, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 539
+  - m_RefCount: 542
     m_Data:
       e00: 1
       e01: 0
@@ -8900,7 +8930,7 @@ Tilemap:
       e32: 4.5905e-41
       e33: 0
   m_TileColorArray:
-  - m_RefCount: 834
+  - m_RefCount: 837
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   - m_RefCount: 0
     m_Data: {r: 3.8171e-41, g: 3.8171e-41, b: 3.8171e-41, a: 3.8171e-41}
@@ -9413,6 +9443,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 41f1be4a-35a5-4677-803e-d955897f2500
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 7cac3c32-7210-47ac-8a72-73abf7b0ef0f
+    m_ActionName: Player/Start[/Keyboard/anyKey]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player

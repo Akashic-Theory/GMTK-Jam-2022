@@ -63,7 +63,7 @@ MonoBehaviour:
   DieSocket: {fileID: 6299065240448098559}
   DicePrefab: {fileID: 7674925100196841918, guid: a7db84dc5cb3b5148a69c49a4070e3be,
     type: 3}
-  hp: 4
+  hp: 6
   growth: 1
   worth: 0
   speed: 1
