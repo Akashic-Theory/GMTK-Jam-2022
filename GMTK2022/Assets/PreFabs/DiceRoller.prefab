@@ -78,7 +78,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotStrength: 15.62
   velocity: 9.15
-  rb: {fileID: 0}
+  rb: {fileID: 8946966528509005294}
 --- !u!1001 &4011734027659602024
 PrefabInstance:
   m_ObjectHideFlags: 0

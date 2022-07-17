@@ -31,7 +31,7 @@ public class Tower : MonoBehaviour
     private float attackCD = 0f;
     private Creep target = null;
     private int _dice = 0;
-    private bool placed = false;
+    public bool placed = false;
     
     public int dice { get => _dice; set => _dice = value; }
     private void Awake()

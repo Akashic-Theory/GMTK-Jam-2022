@@ -15,7 +15,7 @@ public class Purchase : MonoBehaviour
     public Action OnBuy;
 
     public int cost;
-    private (int, int) validRolls;
+    public (int, int) validRolls;
 
     private void Awake()
     {
@@ -68,7 +68,7 @@ public class Purchase : MonoBehaviour
         }
     }
 
-    private void UpdateDisplay()
+    public void UpdateDisplay()
     {
         display.text = $"{cost}\n" +
             $"{validRolls}";

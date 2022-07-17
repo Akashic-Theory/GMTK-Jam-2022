@@ -13,7 +13,6 @@ public class DiceRoller : MonoBehaviour
     [SerializeField] private float rotStrength = 2f;
     [SerializeField] private float velocity = 1f;
     
-    [HideInInspector]
     public Rigidbody rb;
 
     private void Awake()
