@@ -6,7 +6,9 @@ using UnityEngine;
 
 public class Tower : MonoBehaviour
 {
-    public Transform socket;
+    public DiceSocket socket;
+    public Transform barrel;
+    public Transform rotateAxis;
     public GameObject projectile;
     
     // Stats
@@ -15,14 +17,14 @@ public class Tower : MonoBehaviour
     public float attackSpeed = 1f;
     public float range = 3.5f;
     private float attackDelay;
-    
+
     // Visual Parameters
     [Header("Visual Parameters")]
-    public float bobAmplitude;
-    public float bobFrequency;
-    public float bobPhase;
-    public float rotFrequency;
-    public float rotPhase;
+    public float bobAmplitude = 1f;
+    public float bobFrequency = 1f;
+    public float bobPhase = 1f;
+    public float rotFrequency = 1f;
+    public float rotPhase = 1f;
     
     //
     private float attackCD = 0f;
@@ -35,6 +37,12 @@ public class Tower : MonoBehaviour
         attackDelay = 1f / attackSpeed;
     }
 
+    private void Start()
+    {
+        socket.OnSocket += OnSocket;
+        socket.OnPop += OnPop;
+    }
+
     private void FixedUpdate()
     {
         attackCD -= Time.fixedDeltaTime;
@@ -42,10 +50,12 @@ public class Tower : MonoBehaviour
         {
             target = Game.Creeps.FindAll(creep => creep.transform.position.Dist2D(transform.position) <= range).FirstOrDefault();
         }
+
         if (_dice > 0 && target && attackCD < 0f)
         {
-            var socketPosition = socket.position;
-            var proj = Instantiate(projectile, socketPosition, Quaternion.LookRotation(target.transform.position - socketPosition, Vector3.up))
+            Vector3 barrelPostion = barrel.position;
+
+            var proj = Instantiate(projectile, barrelPostion, Quaternion.LookRotation(target.transform.position - barrelPostion, Vector3.up))
                 .GetComponent<Projectile>();
             proj.damage = damage;
             proj.dice = _dice;
@@ -56,15 +66,29 @@ public class Tower : MonoBehaviour
 
     private void Update()
     {
-        Vector3 pos = socket.position;
+        if(target)
+            rotateAxis.rotation = Quaternion.LookRotation(target.transform.position - barrel.position, Vector3.up);
+
+        Transform socketTransform = socket.transform;
+        Vector3 pos = socketTransform.localPosition;
         pos.y = bobAmplitude * Mathf.Sin(bobFrequency * Time.time + bobPhase);
-        socket.position = pos;
-        socket.rotation = Quaternion.LookRotation(
+        socketTransform.localPosition = pos;
+        socketTransform.rotation = Quaternion.LookRotation(
                             new Vector3(
-                                Mathf.Sin(rotFrequency * Time.time + rotPhase), 
-                                0, 
+                                Mathf.Sin(rotFrequency * Time.time + rotPhase),
+                                0,
                                 Mathf.Cos(rotFrequency * Time.time + rotPhase)),
                             Vector3.up
             );
+    }
+
+    private void OnSocket(Dice dice)
+    {
+        _dice = dice.val;
+    }
+
+    private void OnPop(Dice dice)
+    {
+        _dice = 0;
     }
 }

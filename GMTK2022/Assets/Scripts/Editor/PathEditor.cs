@@ -65,8 +65,8 @@ public class PathEditor : Editor
 
             lastPos = v + pos;
 
-            v.x = Mathf.Floor(v.x) + 0.5f;
-            v.z = Mathf.Floor(v.z) + 0.5f;
+            v.x = Mathf.RoundToInt(v.x);
+            v.z = Mathf.RoundToInt(v.z);
             handles.Add(new Vector3(v.x, 0f, v.z));
         }
 

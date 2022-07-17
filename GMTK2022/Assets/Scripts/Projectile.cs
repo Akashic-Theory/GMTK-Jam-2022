@@ -21,5 +21,10 @@ public class Projectile : MonoBehaviour
                 Destroy(gameObject);
             }
         }
+        else
+        {
+            Debug.Log("target died without me!");
+            Destroy(gameObject);
+        }
     }
 }

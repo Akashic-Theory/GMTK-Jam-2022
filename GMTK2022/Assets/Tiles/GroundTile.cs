@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 
 [CreateAssetMenu]
-public class GroundTile : Tile
+public class GroundTile : RuleTile
 {
     public bool placeable;
 }

@@ -9,7 +9,7 @@ public class DiceSocket : MonoBehaviour
     public bool[] valid = {true, true, true, true, true, true};
     private bool _open = true;
     private Collider col;
-    private Dice held;
+    public Dice held { get; private set; }
 
     public bool open
     {
@@ -30,17 +30,24 @@ public class DiceSocket : MonoBehaviour
         gameObject.layer |= LayerMask.NameToLayer("Socket");
     }
 
-    public void Attach(Dice dice)
+    public bool Attach(Dice dice)
     {
         if (valid[dice.val - 1])
         {
             Pop();
             held = dice;
-            var diceTransform = dice.transform;
-            diceTransform.position = transform.position;
-            diceTransform.parent = transform;
+
+            Transform diceTransform = dice.transform;
+
+            diceTransform.position = Vector3.zero;
+            diceTransform.localScale = Vector3.one;
+            diceTransform.SetParent(transform, false);
+
             OnSocket(dice);
+            return true;
         }
+
+        return false;
     }
 
     public void Pop()

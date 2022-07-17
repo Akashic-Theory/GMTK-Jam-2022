@@ -18,7 +18,7 @@ public class Dice : MonoBehaviour
             }
 
             _val = value;
-            transform.rotation = dieAngles[_val - 1];
+            transform.localRotation = dieAngles[_val - 1];
         }
     }
 

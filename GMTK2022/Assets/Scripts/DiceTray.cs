@@ -16,6 +16,9 @@ public class DiceTray : MonoBehaviour
     [SerializeField] private Transform[] extents;
     [SerializeField] private Transform cdRep;
     [SerializeField] private Transform[] bucketExtents;
+    [SerializeField] float diceScale = 0.2f;
+    [SerializeField] private Purchase towerPurchase;
+    [SerializeField] private Purchase dicePurchase;
 
     [Space]
     [SerializeField] private int _dicePool;
@@ -83,9 +86,11 @@ public class DiceTray : MonoBehaviour
                 continue;
             }
             upgradeSockets[i].open = true;
+            /*
             upgradeSockets[i].valid = new bool[]{ false, false, false, false, false, false};
             int index = Random.Range(0, 6);
             upgradeSockets[i].valid[index] = true;
+            */
         }
     }
 
@@ -100,7 +105,6 @@ public class DiceTray : MonoBehaviour
 
         dicePool = dicePool;
         rerollHandler = GetComponentInChildren<Reroll>();
-        rerollHandler.Roll += Roll;
         rollCd = rollCdMax;
         bucketSpawnCd = 0f;
         for (int i = 0; i < 4; i++)
@@ -109,10 +113,16 @@ public class DiceTray : MonoBehaviour
             upgradeSockets[i].OnPop += popped =>
             {
                 Destroy(popped.gameObject);
-                dicePool++;
             };
         }
         PrepUpgrades();
+    }
+
+    private void Start()
+    {
+        rerollHandler.Roll += Roll;
+        dicePurchase.OnBuy += BuyDice;
+        towerPurchase.OnBuy += BuyTower;
     }
 
     private void Update()
@@ -143,6 +153,16 @@ public class DiceTray : MonoBehaviour
         }
     }
 
+    private void BuyDice()
+    {
+        maxRoll++;
+    }
+
+    private void BuyTower()
+    {
+
+    }
+
     public void Roll(InputAction.CallbackContext context)
     {
         if (context.performed)
@@ -161,7 +181,8 @@ public class DiceTray : MonoBehaviour
         dicePool += dice.Count;
         foreach (var die in dice)
         {
-            Destroy(die.gameObject);
+            if(die)
+                Destroy(die.gameObject);
         }
         dice.Clear();
 
@@ -237,6 +258,7 @@ public class DiceTray : MonoBehaviour
         Dice die = Instantiate(dicePrefab, rt.position, rt.rotation);
         dice.Add(die);
         die.val = Random.Range(1, 7);
+        die.transform.localScale = Vector3.one * diceScale;
         Destroy(roller.gameObject);
     }
 }

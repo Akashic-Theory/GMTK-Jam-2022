@@ -13,6 +13,11 @@ public class Reroll : MonoBehaviour
         Roll = () => { };
     }
 
+    public void Cast()
+    {
+        Roll();
+    }
+
     public void Cast(InputAction.CallbackContext context)
     {
         if (!context.performed)
@@ -20,8 +25,7 @@ public class Reroll : MonoBehaviour
             return;
         }
         Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
-        RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, Mathf.Infinity, LayerMask.GetMask("Interactable")))
+        if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, LayerMask.GetMask("Interactable")))
         {
             Roll();
         }

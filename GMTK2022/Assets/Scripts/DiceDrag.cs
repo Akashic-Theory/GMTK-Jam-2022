@@ -9,7 +9,6 @@ public class DiceDrag : MonoBehaviour
 {
     [SerializeField] private DiceTray tray;
     
-    
     private Dice dice;
     private Vector3 original;
     private Camera cam;
@@ -60,7 +59,8 @@ public class DiceDrag : MonoBehaviour
             if (Physics.Raycast(ray, out hit, Mathf.Infinity, LayerMask.GetMask("Socket")))
             {
                 DiceSocket socket = hit.transform.GetComponent<DiceSocket>();
-                socket.Attach(dice);
+                if(!socket.Attach(dice))
+                    dice.transform.position = original;
             }
             else if(dice)
             {

@@ -93,7 +93,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 8893275203445547087}
   DieSocket: {fileID: 1830134164026066018}
-  DicePrefab: {fileID: 1249349339852548886, guid: a7db84dc5cb3b5148a69c49a4070e3be,
+  DicePrefab: {fileID: 7674925100196841918, guid: a7db84dc5cb3b5148a69c49a4070e3be,
     type: 3}
   hp: 4
   speed: 2
