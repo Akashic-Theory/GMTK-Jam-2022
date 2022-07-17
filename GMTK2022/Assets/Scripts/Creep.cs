@@ -19,6 +19,9 @@ public class Creep : MonoBehaviour
     [SerializeField]
     protected int[] resist = new int[6] { 1, 2, 4, 0, 4, 2 };
 
+    [SerializeField]
+    protected PlaySound soundCreator;
+
     protected int value;
     protected int pathIndex = 1;
     protected Vector3 target;
@@ -70,6 +73,7 @@ public class Creep : MonoBehaviour
 
     public void Hurt(int dice, int damage)
     {
+        soundCreator.PlayHurtSound();
         var res = resist[Math.Abs(dice - value) % 6];
         if (res == 0)
         {
@@ -87,6 +91,21 @@ public class Creep : MonoBehaviour
     private void Die()
     {
         Game.Creeps.Remove(this);
+        StartCoroutine(FallThroughGround());
+    }
+
+    IEnumerator FallThroughGround()
+    {
+        Vector3 orig = transform.position;
+        Vector3 destination = new Vector3(transform.position.x, transform.position.y - 3f, transform.position.z);
+        float time = 0;
+        while (time <= 1)
+        {
+            transform.position = Vector3.Lerp(orig, destination, time);
+            time += Time.deltaTime / 2;
+            yield return null;
+        }
+
         Destroy(gameObject);
     }
 }
