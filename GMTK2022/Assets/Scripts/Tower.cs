@@ -56,7 +56,10 @@ public class Tower : MonoBehaviour
     {
         if (!placed)
             return;
-
+        if (!Game.Creeps.Contains(target))
+        {
+            target = null;
+        }
         attackCD -= Time.fixedDeltaTime;
         if (!target || target.transform.position.Dist2D(transform.position) > range)
         {

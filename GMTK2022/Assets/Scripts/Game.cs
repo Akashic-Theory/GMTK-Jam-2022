@@ -16,6 +16,7 @@ public class Game : MonoBehaviour
     public float spawnDelay = 2f;
     private float spawnTimer;
     private Spawner _spawner;
+    private int cost = 1;
     
     private void Awake()
     {
@@ -26,17 +27,25 @@ public class Game : MonoBehaviour
 
         spawnTimer = spawnDelay;
         _spawner = GetComponent<Spawner>();
+        _spawner.GetWaveOrder += CallWave;
     }
 
-    private void FixedUpdate()
+    private void CallWave()
     {
-        spawnTimer -= Time.fixedDeltaTime;
-        if (spawnTimer <= 0)
-        {
-            SpawnEnemy();
-            spawnTimer = spawnDelay;
-        }
+        Debug.Log($"Starting Wave {cost}");
+        _spawner.SpawnWave(cost);
+        cost++;
     }
+
+    // private void FixedUpdate()
+    // {
+    //     spawnTimer -= Time.fixedDeltaTime;
+    //     if (spawnTimer <= 0)
+    //     {
+    //         SpawnEnemy();
+    //         spawnTimer = spawnDelay;
+    //     }
+    // }
 
     public static void DamagePlayer(int amount)
     {

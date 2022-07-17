@@ -17,6 +17,8 @@ public class Creep : MonoBehaviour
     [SerializeField] 
     protected int growth = 1;
     [SerializeField]
+    protected int worth;
+    [SerializeField]
     protected float speed;
     [SerializeField]
     protected int[] resist = new int[6] { 1, 2, 4, 0, 4, 2 };
@@ -30,6 +32,11 @@ public class Creep : MonoBehaviour
     private EventRedirect redirect;
     private bool isDead = false;
 
+    public void Init(float growMod, int reward, int waveNum)
+    {
+        hp += Mathf.FloorToInt(growth * waveNum * growMod);
+        worth = reward;
+    }
 
     private void Awake()
     {
@@ -69,6 +76,7 @@ public class Creep : MonoBehaviour
                 Game.DamagePlayer(1);
                 isDead = true;
                 animator.SetBool("Attack", true);
+                Game.Creeps.Remove(this);
             }
         }
     }
@@ -87,13 +95,14 @@ public class Creep : MonoBehaviour
         {
             isDead = true;
             animator.SetBool("Die", true);
+            Game.Creeps.Remove(this);
         }
     }
 
     private void Die()
     {
-        Game.Creeps.Remove(this);
         StartCoroutine(FallThroughGround());
+        DiceTray.tray.dicePool += worth;
     }
 
     IEnumerator FallThroughGround()
