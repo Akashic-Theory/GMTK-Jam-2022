@@ -64,9 +64,9 @@ MonoBehaviour:
   DicePrefab: {fileID: 7674925100196841918, guid: a7db84dc5cb3b5148a69c49a4070e3be,
     type: 3}
   hp: 4
-  speed: 0.8
-  resist: 010000000400000000000000000000000000000004000000
-  soundCreator: {fileID: 0}
+  speed: 1
+  resist: 010000000200000004000000000000000400000002000000
+  soundCreator: {fileID: 4085874595068616519}
 --- !u!1 &6788177808712854852
 GameObject:
   m_ObjectHideFlags: 0
@@ -360,40 +360,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 3708553910415267761}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &3616810822694925817
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4590865597939395296}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a0fccb860bc8f9248b0f543f3f79c3a8, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &2042131447103795795
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4590865597939395296}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31ffa61f82165b34dbe1176ace4a6a1e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eventNames:
-  - die
 --- !u!82 &65253119001256522
 AudioSource:
   m_ObjectHideFlags: 0
@@ -540,3 +506,5 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 658584474dde5024c9210ca02aaa802e, type: 3}
   - {fileID: 8300000, guid: a7017305849c3b7418e97e1584dafb89, type: 3}
   - {fileID: 8300000, guid: 34099baca84d81e498dff42c3b486f2b, type: 3}
+  - {fileID: 8300000, guid: 21da8bf39aa7f9d43a63394ee76b8af1, type: 3}
+  hurtIndex: 3
