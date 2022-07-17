@@ -51,8 +51,12 @@ public class DiceDrag : MonoBehaviour
             if (Physics.Raycast(ray, out hit, Mathf.Infinity, LayerMask.GetMask("Dice")))
             {
                 dice = hit.transform.GetComponent<Dice>();
-                original = dice.transform.position;
-                dragging = true;
+
+                if(!dice.socketed)
+                {
+                    original = dice.transform.position;
+                    dragging = true;
+                }
             }
         } else if (context.canceled && context.control.path == click && dragging)
         {

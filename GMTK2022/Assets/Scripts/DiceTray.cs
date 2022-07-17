@@ -33,6 +33,8 @@ public class DiceTray : MonoBehaviour
         {
             _dicePool = value;
             poolText.text = $"Die: {value}";
+            towerPurchase.CheckStatus();
+            dicePurchase.CheckStatus();
         }
     }
 
@@ -117,6 +119,7 @@ public class DiceTray : MonoBehaviour
         }
 
         dicePool = dicePool;
+        maxRoll = maxRoll;
         rerollHandler = GetComponentInChildren<Reroll>();
         rollCd = rollCdMax;
         bucketSpawnCd = 0f;
