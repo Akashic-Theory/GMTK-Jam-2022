@@ -27,6 +27,10 @@ public class Game : MonoBehaviour
 
         spawnTimer = spawnDelay;
         _spawner = GetComponent<Spawner>();
+    }
+
+    private void Start()
+    {
         _spawner.GetWaveOrder += CallWave;
     }
 

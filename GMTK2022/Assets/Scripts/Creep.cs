@@ -15,7 +15,7 @@ public class Creep : MonoBehaviour
     [SerializeField]
     protected int hp = 4;
     [SerializeField] 
-    protected int growth = 1;
+    protected float growth = 1.2f;
     [SerializeField]
     protected int worth;
     [SerializeField]
@@ -36,6 +36,7 @@ public class Creep : MonoBehaviour
     {
         hp += Mathf.FloorToInt(growth * waveNum * growMod);
         worth = reward;
+        speed *= Mathf.Pow(1.05f, waveNum);
     }
 
     private void Awake()

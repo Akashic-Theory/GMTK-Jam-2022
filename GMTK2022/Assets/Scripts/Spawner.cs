@@ -24,6 +24,10 @@ public class Spawner : MonoBehaviour
     private void FixedUpdate()
     {
         spawnDelay -= Time.fixedDeltaTime;
+        if (waveNum == 0 && spawnDelay > 0f)
+        {
+            return;
+        }
         if (queue.Count == 0)
         {
             if (Game.Creeps.Count == 0)
@@ -45,7 +49,7 @@ public class Spawner : MonoBehaviour
             Creep creep = Instantiate(creeps[(int)unit.type], Game.path[0], Quaternion.identity);
             creep.Init(unit.growMod, unit.reward, waveNum);
             Game.Creeps.Add(creep);
-            spawnDelay += unit.delay;
+            spawnDelay += unit.delay * Mathf.Pow(0.98f, waveNum);
         }
     }
 
