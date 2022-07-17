@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44082963, g: 0.48952526, b: 0.56963706, a: 1}
+  m_IndirectSpecularColor: {r: 0.175928, g: 0.22015944, b: 0.30248725, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -123,6 +123,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &151652946 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5888633725379147500, guid: 6f58d838ed2a99c46935a91b3bb63210,
+    type: 3}
+  m_PrefabInstance: {fileID: 776204048}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &245346950
 GameObject:
   m_ObjectHideFlags: 0
@@ -9024,6 +9030,18 @@ MonoBehaviour:
   - {x: 1, y: 0, z: 5}
   - {x: -6, y: 0, z: 5}
   - {x: -6, y: 0, z: 12}
+--- !u!114 &510504764 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1264226122373929261, guid: 6f58d838ed2a99c46935a91b3bb63210,
+    type: 3}
+  m_PrefabInstance: {fileID: 776204048}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &643064252 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2844022012006833353, guid: e1168ae1e146ed34ab3fcb6c60f848e2,
@@ -9049,6 +9067,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1264226122373929261, guid: 6f58d838ed2a99c46935a91b3bb63210,
+        type: 3}
+      propertyPath: m_text
+      value: Wave 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2222798999881597261, guid: 6f58d838ed2a99c46935a91b3bb63210,
+        type: 3}
+      propertyPath: m_TagString
+      value: healthDisplay
+      objectReference: {fileID: 0}
+    - target: {fileID: 5888633725379147500, guid: 6f58d838ed2a99c46935a91b3bb63210,
+        type: 3}
+      propertyPath: m_TagString
+      value: gameOverMenu
+      objectReference: {fileID: 0}
     - target: {fileID: 5888633727075678706, guid: 6f58d838ed2a99c46935a91b3bb63210,
         type: 3}
       propertyPath: m_Pivot.x
@@ -9167,16 +9200,10 @@ PrefabInstance:
     - target: {fileID: 5888633727075678710, guid: 6f58d838ed2a99c46935a91b3bb63210,
         type: 3}
       propertyPath: m_TagString
-      value: gameOverMenu
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f58d838ed2a99c46935a91b3bb63210, type: 3}
---- !u!1 &776204049 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5888633727075678710, guid: 6f58d838ed2a99c46935a91b3bb63210,
-    type: 3}
-  m_PrefabInstance: {fileID: 776204048}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1445223932
 GameObject:
   m_ObjectHideFlags: 0
@@ -9438,6 +9465,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   creepPrefab: {fileID: 0}
   baseHealth: 50
+  waveDisplay: {fileID: 510504764}
   spawnDelay: 3
 --- !u!4 &2046149638
 Transform:
@@ -9596,6 +9624,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 7cac3c32-7210-47ac-8a72-73abf7b0ef0f
     m_ActionName: Player/Start[/Keyboard/anyKey]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: f87fefdd-f208-4e31-9d96-86d7a29a60a8
+    m_ActionName: Player/Proceed[/Keyboard/space]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -9666,7 +9698,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d11c9a79ae937004aa2890d63d0a0f7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  menu: {fileID: 776204049}
+  menu: {fileID: 151652946}
 --- !u!1001 &4530559629210105828
 PrefabInstance:
   m_ObjectHideFlags: 0

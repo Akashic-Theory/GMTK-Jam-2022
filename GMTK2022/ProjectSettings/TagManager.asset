@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - gameOverMenu
+  - healthDisplay
   layers:
   - Default
   - TransparentFX
