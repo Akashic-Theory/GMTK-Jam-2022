@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class Tower : MonoBehaviour
 {
-    private static int[] lookup = { 1,2,3,4,3,2 };
+    private static int[] lookup;
     public DiceSocket socket;
     public Transform barrel;
     public Transform rotateAxis;
@@ -36,6 +36,7 @@ public class Tower : MonoBehaviour
     public int dice { get => _dice; set => _dice = value; }
     private void Awake()
     {
+        lookup = new int[] { 1, 2, 3, 4, 3, 2 };
         attackDelay = 1f / attackSpeed;
         gameObject.layer |= LayerMask.NameToLayer("Tower");
     }
