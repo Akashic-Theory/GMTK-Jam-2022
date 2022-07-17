@@ -14,6 +14,8 @@ public class Creep : MonoBehaviour
     protected Dice DicePrefab;
     [SerializeField]
     protected int hp = 4;
+    [SerializeField] 
+    protected int growth = 1;
     [SerializeField]
     protected float speed;
     [SerializeField]

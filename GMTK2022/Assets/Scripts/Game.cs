@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
-
+[RequireComponent(typeof(Spawner))]
 public class Game : MonoBehaviour
 {
     [SerializeField]
@@ -15,6 +15,7 @@ public class Game : MonoBehaviour
 
     public float spawnDelay = 2f;
     private float spawnTimer;
+    private Spawner _spawner;
     
     private void Awake()
     {
@@ -24,6 +25,7 @@ public class Game : MonoBehaviour
         }
 
         spawnTimer = spawnDelay;
+        _spawner = GetComponent<Spawner>();
     }
 
     private void FixedUpdate()
