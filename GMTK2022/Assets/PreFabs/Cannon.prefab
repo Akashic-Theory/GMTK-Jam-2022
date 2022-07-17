@@ -65,7 +65,9 @@ MonoBehaviour:
   DicePrefab: {fileID: 7674925100196841918, guid: a7db84dc5cb3b5148a69c49a4070e3be,
     type: 3}
   hp: 4
-  speed: 1
+  growth: 1.2
+  worth: 0
+  speed: 1.1
   resist: 010000000200000004000000000000000400000002000000
   soundCreator: {fileID: 8276258308092746248}
 --- !u!1 &8352248688006360163

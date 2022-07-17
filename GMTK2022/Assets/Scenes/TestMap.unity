@@ -9496,8 +9496,14 @@ MonoBehaviour:
   - {fileID: 728875741255203917, guid: 5bd3879dbd9468c4ead9aa1f0ebf1df3, type: 3}
   waves:
   - {fileID: 11400000, guid: e554543e5be29524692b10228ea087cc, type: 2}
-  - {fileID: 11400000, guid: bd365392e3bfd004ba9a0c00bfa252f4, type: 2}
-  - {fileID: 11400000, guid: 87e96d6c287f38f4b8ac81cfe75bfc04, type: 2}
+  - {fileID: 11400000, guid: 8cdd2c4866ff0914da6554b5d74e0581, type: 2}
+  - {fileID: 11400000, guid: 54dc4fc303a735b4b977c74a1ead2fe5, type: 2}
+  - {fileID: 11400000, guid: e941c23eb78fad64a96380b4e84cd340, type: 2}
+  - {fileID: 11400000, guid: 8827dde8d42344e4e902c03467d04113, type: 2}
+  - {fileID: 11400000, guid: 9a46514573d49994a91e7dcbca0e74e2, type: 2}
+  - {fileID: 11400000, guid: d2320ea4c6f138042821802c188c75ff, type: 2}
+  - {fileID: 11400000, guid: 9ddf54a7a25fe584eb9742da778d5b18, type: 2}
+  - {fileID: 11400000, guid: 53ec5c5f2eb3a584b9dd42a76588d6a9, type: 2}
   spawnDelay: 10
 --- !u!1001 &9088662991024879073
 PrefabInstance:

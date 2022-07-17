@@ -10,7 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ab5eb35f2349499c9055aa25d2ca7b58, type: 3}
-  m_Name: bossCannon
+  m_Name: spacedCannons
   m_EditorClassIdentifier: 
-  cost: 0
-  units: []
+  cost: 1
+  units:
+  - type: 1
+    delay: 3
+    growMod: 0
+    reward: 1
+  - type: 1
+    delay: 3
+    growMod: 0
+    reward: 1
+  - type: 1
+    delay: 3
+    growMod: 0
+    reward: 1

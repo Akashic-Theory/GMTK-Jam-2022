@@ -10,7 +10,31 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ab5eb35f2349499c9055aa25d2ca7b58, type: 3}
-  m_Name: smallHordeCannon
+  m_Name: LotsZombies
   m_EditorClassIdentifier: 
-  cost: 0
-  units: []
+  cost: 3
+  units:
+  - type: 0
+    delay: 1
+    growMod: 1
+    reward: 1
+  - type: 0
+    delay: 1
+    growMod: 1
+    reward: 1
+  - type: 0
+    delay: 1
+    growMod: 1
+    reward: 1
+  - type: 0
+    delay: 1
+    growMod: 1
+    reward: 1
+  - type: 0
+    delay: 1
+    growMod: 1
+    reward: 1
+  - type: 0
+    delay: 1
+    growMod: 1
+    reward: 1
