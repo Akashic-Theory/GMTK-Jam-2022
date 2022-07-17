@@ -140,7 +140,8 @@ public class TutorialDialogue : MonoBehaviour
             }
             case 10:
             {
-                Dice obj = Instantiate(_die, rollLoc);
+                Dice obj = Instantiate(_die, rollLoc.position, Quaternion.identity);
+                obj.transform.localScale = Vector3.one * 0.2f;
                 obj.val = 6;
                 ready[10] = true;
                 _textspace.enabled = ready[10];

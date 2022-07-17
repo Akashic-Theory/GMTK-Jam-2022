@@ -29,7 +29,9 @@ public class Game : MonoBehaviour
         playerHealth = baseHealth;
 
         gameOverMenu = GameObject.FindGameObjectWithTag("gameOverMenu");
-        gameOverMenu.SetActive(false);
+
+        if(gameOverMenu)
+            gameOverMenu.SetActive(false);
 
         spawnTimer = spawnDelay;
         _spawner = GetComponent<Spawner>();
