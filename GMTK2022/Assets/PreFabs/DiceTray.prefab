@@ -261,6 +261,37 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &946766009240263615
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3250662413061946982}
+  m_Layer: 0
+  m_Name: TowerSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3250662413061946982
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 946766009240263615}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.8, y: 0.33, z: 0.5}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 1330976759299029965}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1396817464422671493
 GameObject:
   m_ObjectHideFlags: 0
@@ -502,6 +533,9 @@ MonoBehaviour:
   diceScale: 0.2
   towerPurchase: {fileID: 3057704627694169587}
   dicePurchase: {fileID: 3942183908657839440}
+  towerPrefab: {fileID: 7941531261685130454, guid: 7c1085ba2a2ebf64e8158b32c0f31d1e,
+    type: 3}
+  towerSpawn: {fileID: 3250662413061946982}
   _dicePool: 8
   maxRoll: 4
   bucketSpawnSpeed: 3
@@ -2060,6 +2094,7 @@ Transform:
   - {fileID: 5849315239036958149}
   - {fileID: 1079504268030338728}
   - {fileID: 6201890051447262151}
+  - {fileID: 3250662413061946982}
   m_Father: {fileID: 2844022012006833350}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
