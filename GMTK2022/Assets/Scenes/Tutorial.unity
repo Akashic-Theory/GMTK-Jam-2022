@@ -273,17 +273,17 @@ PrefabInstance:
     - target: {fileID: 414756291675689797, guid: a7db84dc5cb3b5148a69c49a4070e3be,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.24
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 414756291675689797, guid: a7db84dc5cb3b5148a69c49a4070e3be,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.24
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 414756291675689797, guid: a7db84dc5cb3b5148a69c49a4070e3be,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.24
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 414756291675689797, guid: a7db84dc5cb3b5148a69c49a4070e3be,
         type: 3}
@@ -293,7 +293,7 @@ PrefabInstance:
     - target: {fileID: 414756291675689797, guid: a7db84dc5cb3b5148a69c49a4070e3be,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.92
+      value: 6.64
       objectReference: {fileID: 0}
     - target: {fileID: 414756291675689797, guid: a7db84dc5cb3b5148a69c49a4070e3be,
         type: 3}
@@ -9437,14 +9437,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 689302647}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.65, y: 1.2, z: 0.4}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalRotation: {x: -0, y: 0.55961317, z: 0.00000003073364, w: 0.828754}
+  m_LocalPosition: {x: -0.05993089, y: 0.45, z: -0.34020233}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 6437495607099255079}
   m_RootOrder: 14
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 68.058, z: 0}
 --- !u!114 &964439499 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7674925100196841918, guid: a7db84dc5cb3b5148a69c49a4070e3be,
@@ -9653,17 +9653,17 @@ PrefabInstance:
     - target: {fileID: 414756291675689797, guid: a7db84dc5cb3b5148a69c49a4070e3be,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.24
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 414756291675689797, guid: a7db84dc5cb3b5148a69c49a4070e3be,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.24
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 414756291675689797, guid: a7db84dc5cb3b5148a69c49a4070e3be,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.24
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 414756291675689797, guid: a7db84dc5cb3b5148a69c49a4070e3be,
         type: 3}
@@ -9673,7 +9673,7 @@ PrefabInstance:
     - target: {fileID: 414756291675689797, guid: a7db84dc5cb3b5148a69c49a4070e3be,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.91
+      value: 6.64
       objectReference: {fileID: 0}
     - target: {fileID: 414756291675689797, guid: a7db84dc5cb3b5148a69c49a4070e3be,
         type: 3}
@@ -9925,7 +9925,7 @@ MonoBehaviour:
     and then from your dice pool
   - There's a bit more to the game, but those are the basics! Good luck! Remember
     to rush to roll the dice for a tower purchase as soon as possible!
-  ready: 010101000000000001010000010101
+  ready: 010101010000000001010000010101
   _purchase: {fileID: 6074877604236728338}
   dSocket1: {fileID: 6989660711556699586}
   dSocket2: {fileID: 2116317635188396347}
@@ -9936,8 +9936,6 @@ MonoBehaviour:
   tower: {fileID: 7941531261685130454, guid: 7c1085ba2a2ebf64e8158b32c0f31d1e, type: 3}
   towerLoc: {fileID: 5998168994702658439}
   enemy: {fileID: 6427127473849744573, guid: f760e96f141682c4083f5156de280e6c, type: 3}
-  _reroll: {fileID: 5694452280213233080}
-  _roller: {fileID: 1250213969631203779, guid: b86f4b0ab646a2b44bcb0a673c965dca, type: 3}
   _die: {fileID: 7674925100196841918, guid: a7db84dc5cb3b5148a69c49a4070e3be, type: 3}
   rollLoc: {fileID: 689302648}
 --- !u!114 &1685182058
@@ -10116,17 +10114,17 @@ PrefabInstance:
     - target: {fileID: 414756291675689797, guid: a7db84dc5cb3b5148a69c49a4070e3be,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.24
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 414756291675689797, guid: a7db84dc5cb3b5148a69c49a4070e3be,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.24
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 414756291675689797, guid: a7db84dc5cb3b5148a69c49a4070e3be,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.24
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 414756291675689797, guid: a7db84dc5cb3b5148a69c49a4070e3be,
         type: 3}
@@ -10136,7 +10134,7 @@ PrefabInstance:
     - target: {fileID: 414756291675689797, guid: a7db84dc5cb3b5148a69c49a4070e3be,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.91
+      value: 6.64
       objectReference: {fileID: 0}
     - target: {fileID: 414756291675689797, guid: a7db84dc5cb3b5148a69c49a4070e3be,
         type: 3}
@@ -12468,7 +12466,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7140360575131751935
 Transform:
   m_ObjectHideFlags: 0

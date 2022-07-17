@@ -31,6 +31,7 @@ public class Creep : MonoBehaviour
     protected Vector3 target;
     private EventRedirect redirect;
     private bool isDead = false;
+    private Dice die;
 
     public void Init(float growMod, int reward, int waveNum)
     {
@@ -42,13 +43,19 @@ public class Creep : MonoBehaviour
     private void Awake()
     {
         value = Random.Range(1, 7);
-        Dice die = Instantiate(DicePrefab, DieSocket);
+        die = Instantiate(DicePrefab, DieSocket);
         die.val = value;
 
         target = Game.path[pathIndex];
         transform.rotation = Quaternion.LookRotation(target - transform.position, Vector3.up);
 
         redirect = gameObject.GetComponentInChildren<EventRedirect>();
+    }
+
+    public void SetVal(int val)
+    {
+        value = val;
+        die.val = val;
     }
 
     private void Start()

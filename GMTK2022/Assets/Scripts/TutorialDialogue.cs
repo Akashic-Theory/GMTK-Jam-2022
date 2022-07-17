@@ -5,6 +5,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class TutorialDialogue : MonoBehaviour
 {
@@ -31,7 +32,6 @@ public class TutorialDialogue : MonoBehaviour
     [SerializeField] private Dice _die;
     [SerializeField] private Transform rollLoc;
 
-    private bool wait = true;
     private void Awake()
     {
         page = 0;
@@ -64,6 +64,13 @@ public class TutorialDialogue : MonoBehaviour
         if (context.performed && ready[page])
         {
             page++;
+
+            if(page >= ready.Length)
+            {
+                SceneManager.LoadScene(2);
+                return;
+            }
+
             _textbox.text = _text[page];
             _textspace.enabled = ready[page];
             if (!ready[page])
@@ -97,6 +104,7 @@ public class TutorialDialogue : MonoBehaviour
             case 5:
             {
                 enemy = Instantiate(enemy, Game.path[0], Quaternion.identity);
+                enemy.SetVal(6);
                 Game.Creeps.Add(enemy);
                 t.gameObject.layer = LayerMask.NameToLayer("Tower");
                 while (!t.placed)
@@ -132,12 +140,24 @@ public class TutorialDialogue : MonoBehaviour
             }
             case 10:
             {
-                Dice obj = Instantiate(_die, rollLoc.position, Quaternion.identity);
+                Dice obj = Instantiate(_die, rollLoc);
                 obj.val = 6;
                 ready[10] = true;
                 _textspace.enabled = ready[10];
                 break;
             }
+            case 11:
+            {
+                while (t.dice != 6)
+                {
+                    yield return new WaitForFixedUpdate();
+                }
+                ready[11] = true;
+                _textspace.enabled = ready[11];
+
+                break;
+            }
+
         }
     }
 
