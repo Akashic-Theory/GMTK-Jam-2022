@@ -14,6 +14,8 @@ public class TutorialDialogue : MonoBehaviour
     [SerializeField] private TMP_Text _textspace;
     [SerializeField] private string[] _text;
     [SerializeField] private bool[] ready;
+    [SerializeField] private Transform[] arrowSpots;
+    [SerializeField] private GameObject arrow;
 
     [Header("Build Tower")] 
     [SerializeField] private Purchase _purchase;
@@ -71,12 +73,28 @@ public class TutorialDialogue : MonoBehaviour
                 return;
             }
 
+            SetArrow(page);
+
             _textbox.text = _text[page];
             _textspace.enabled = ready[page];
             if (!ready[page])
             {
                 StartCoroutine(HandleReqs(page));
             }
+        }
+    }
+
+    private void SetArrow(int page)
+    {
+        if(!arrowSpots[page])
+        {
+            arrow.SetActive(false);
+        }
+        else
+        {
+            arrow.SetActive(true);
+            arrow.transform.position = arrowSpots[page].position;
+            arrow.transform.rotation = arrowSpots[page].rotation;
         }
     }
 
