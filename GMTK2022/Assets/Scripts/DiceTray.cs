@@ -36,8 +36,16 @@ public class DiceTray : MonoBehaviour
         }
     }
 
-    [SerializeField]
-    private int maxRoll = 5;
+    [SerializeField] private int _maxRoll = 5;
+    public int maxRoll
+    {
+        get => _maxRoll;
+        set
+        {
+            rollText.text = $"Roll {value}";
+            _maxRoll = value;
+        }
+    }
 
     [SerializeField] float bucketSpawnSpeed = 3f;
     [SerializeField] float bucketSpawnCd = 0f;
@@ -122,6 +130,7 @@ public class DiceTray : MonoBehaviour
             upgradeSockets[i].OnPop += popped =>
             {
                 Destroy(popped.gameObject);
+                dice.Remove(popped);
             };
         }
 
@@ -168,11 +177,13 @@ public class DiceTray : MonoBehaviour
     private void BuyDice()
     {
         maxRoll++;
+        dicePool += 2;
     }
 
     private void BuyTower()
     {
         Instantiate(towerPrefab, towerSpawn.position, Quaternion.identity);
+        dicePool += 2;
     }
 
     public void Roll(InputAction.CallbackContext context)

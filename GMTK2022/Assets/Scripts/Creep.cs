@@ -26,7 +26,7 @@ public class Creep : MonoBehaviour
     [SerializeField]
     protected PlaySound soundCreator;
 
-    protected int value;
+    public int value;
     protected int pathIndex = 1;
     protected Vector3 target;
     private EventRedirect redirect;

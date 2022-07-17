@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class Tower : MonoBehaviour
 {
+    private static int[] lookup = { 1,2,3,4,3,2 };
     public DiceSocket socket;
     public Transform barrel;
     public Transform rotateAxis;
@@ -61,12 +62,10 @@ public class Tower : MonoBehaviour
             target = null;
         }
         attackCD -= Time.fixedDeltaTime;
-        if (!target || target.transform.position.Dist2D(transform.position) > range)
-        {
-            target = Game.Creeps.FindAll(creep => creep.transform.position.Dist2D(transform.position) <= range).FirstOrDefault();
-        }
+        target = Game.Creeps.FindAll(creep => creep.transform.position.Dist2D(transform.position) <= range)
+                .OrderBy(creep => lookup[Math.Abs(dice - creep.value) % 6]).FirstOrDefault();
 
-        if (_dice > 0 && target && attackCD < 0f)
+            if (_dice > 0 && target && attackCD < 0f)
         {
             Vector3 barrelPostion = barrel.position;
 
